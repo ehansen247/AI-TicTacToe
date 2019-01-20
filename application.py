@@ -12,8 +12,7 @@ Session(app)
 @app.route("/", methods=["GET", "POST"])
 def board():
     if request.method == "POST":
-        session["board"] = [[None, None, None], [None, None, None], [None, None, None]]
-        session["turn"] = "X"
+        session.clear()
         return redirect("/")
     else:
         if "board" not in session or "turn" not in session:
