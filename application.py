@@ -15,7 +15,7 @@ def board():
         session.clear()
         return redirect("/")
     else:
-        if "board" not in session:
+        if "board" not in session or "turn" not in session:
             session["board"] = [[None, None, None], [None, None, None], [None, None, None]]
             session["turn"] = "X"
         elif check(session["turn"]):
@@ -28,6 +28,7 @@ def board():
 
 @app.route("/play/<int:row>/<int:col>")
 def play(row, col):
+
     session["board"][row][col] = session["turn"]
     return redirect(url_for("board"))
 
