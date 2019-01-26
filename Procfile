@@ -1,1 +1,2 @@
-web: gunicorn -b :$PORT application:app
+web: gunicorn -b :$PORT copy:app heroku addons:create redistogo
+

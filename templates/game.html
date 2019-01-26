@@ -18,6 +18,13 @@
         }
     </style>
     <body>
+        {% if over %}
+            <h1>{{ turn }} wins!</h1>
+        {% elif full %}
+            <h1>Tie!</h1>
+        {% else %}
+            <h1>Tic Tac Toe</h1>
+        {% endif %}
         <table>
             {% for i in range(3) %}
                 <tr>
@@ -33,8 +40,11 @@
                 </tr>
             {% endfor %}
         </table>
-        <form method = "post">
+        <form method="post" action="/reset">
             <button type="submit">Reset Board</button>
+        </form>
+        <form method="post" action="/move">
+            <button type="submit">Computer Move</button>
         </form>
     </body>
 
